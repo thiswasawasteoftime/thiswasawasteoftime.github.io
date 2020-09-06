@@ -18,6 +18,7 @@
 \lfoot{Group 13}
 \rfoot{Page \thepage}
 \renewcommand{\footrulewidth}{1pt}
+\newtheorem*{remark}{Remark}
 \begin{document}
 \title{EE 325 Group 13 - Assignment 2 }
 \author{
@@ -63,16 +64,40 @@ We will use the following equation for the proof :
 \begin{proof}
 	Since $A \cup B \cup C = (A \cup B) \cup C$,  using \ref{(1)}, we can say that : \\ 
 	\begin{align*}
-		    P(A \cup B \cup C) &=P((A \cup B) \cup C) \\
-		    &= P(A \cup B) + P(C) - P((A \cup B) \cap C)) &&\text{(using \ref{(1)})} \\
-		    &= P(A) + P(B) + P(C) - P(AB) - P((A \cup B) \cap C)) &&\text{(using \ref{(1)})} \\
-		    &= P(A) + P(B) + P(C) - P(AB) - P((A \cap C) \cup (B \cap C)) \\ &\text{(using distributive property of $\cap$ and $\cup$)} \\
-		    &= P(A) + P(B) + P(C) - P(AB) - \left(P(A \cap C) + P(B \cap C) - P((A \cap C) \cap (B \cap C)) \right) \\ &\text{(using \ref{(1)})} \\
-		    &= P(A) + P(B) + P(C) - P(AB) - P(AC) - P(BC) + P(ABC) \\
-		    & \text{Since}  (A \cap C) \cap (B \cap C) \equiv A \cap B \cap C  \text{(using distributive property of $\cap$)} 	
+	    P(A \cup B \cup C) &=P((A \cup B) \cup C) \\
+	    &= P(A \cup B) + P(C) - P((A \cup B) \cap C)) \\ &\text{(using \ref{(1)})} \\
+	    &= P(A) + P(B) + P(C) - P(AB) - P((A \cup B) \cap C)) \\ &\text{(using \ref{(1)})} \\
+	    &= P(A) + P(B) + P(C) - P(AB) - P((A \cap C) \cup (B \cap C)) \\ &\text{(using distributive property of $\cap$ and $\cup$)} \\
+	    &= P(A) + P(B) + P(C) - P(AB) - ((P(A \cap C) + P(B \cap C) - \\ &P((A \cap C) \cap (B \cap C))) \text{  (using \ref{(1)})} \\
+	    &= P(A) + P(B) + P(C) - P(AB) - P(AC) - P(BC) + P(ABC) \\
+	    & \text{Since }  (A \cap C) \cap (B \cap C) \equiv A \cap B \cap C  \text{(using distributive property of $\cap$)} 	
 	 \end{align*}
 \end{proof}
 
+For the General formula we shall use induction on $n$(Total number of events) : \\
+\\
+\textbf{Claim :}  \\
+$$ P(A_1 \cup A_2 \dots A_n) = \sum_{i=1}^{n}P(A_i)  -  \sum_{\substack{i,j =1 \\ i \neq j}}^{n}P(A_i A_j)  +  \sum_{\substack{i,j,k = 1 \\ i \neq j \neq k}}^{n}P(A_i A_j A_k)  +  \dots   (-1)^{n+1}P(A_1 A_2 \dots A_n)$$
+\begin{proof}
+	We shall prove the above claim using induction on $n$ \\
+	For the base case of $n = 1$, \\
+	$P(A_1) = P(A_1)$
+	Which is trivially true. \\
+	For the inductive step, let $n > 1 and$ assume (the inductive hypothesis) for $n-1$ : \\
+	\begin{equation}
+	\label{(2)}
+	P(A_1 \cup A_2 \dots A_{n-1}) = \sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})
+	\end{equation}
+	Now we can apply the equation of union of two sets to the two events $A_n$ and $(A_1 \cup A_2 \dots A_{n-1})$ to deduce that : \\
+	
+	$$P((A_1 \cup A_2 \dots A_{n-1}) \cup A_n) = P(A_1 \cup A_2 \dots A_{n-1}) + P(A_n) - P((A_1 \cup A_2 \dots A_{n-1}) \cap A_n) \text{(using \ref{(1)})}$$
+	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(n)$$ \\  $   - P((A_1 \cup A_2 \dots A_{n-1}) \cap A_n) $  (using \ref{(2)})\\
+	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(n)$$ \\  $   - P((A_1 \cap A_n) \cup (A_2 \cap A_n) \cup \dots (A_{n-1} \cap A_n)) \text{(using distributive property of $\cap$ and $\cup$)}$ \\
+	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(n)$$ \\  $$   - \Big(\sum_{i=1}^{n-1}P(A_i  A_n) + \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j A_n) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k A_n) \dots (-1)^{n}P(A_1 A_2 \dots A_{n-1} A_n)\Big)$$\\  (using \ref{(2)})\\
+	$$ =\sum_{i=1}^{n}P(A_i)  -  \sum_{\substack{i,j =1 \\ i \neq j}}^{n}P(A_i A_j)  +  \sum_{\substack{i,j,k = 1 \\ i \neq j \neq k}}^{n}P(A_i A_j A_k)  +  \dots   (-1)^{n+1}P(A_1 A_2 \dots A_n) $$
+		
+where in the last line we have used the inductive hypothesis. This completes the proof by induction.
+\end{proof}
 \section{Question 2 - (2-10)}
 \label{Q2}
 \textbf{2-10} \textit{(Chain rule)} Show that  : \\
@@ -107,23 +132,102 @@ where in the last line we have used the inductive hypothesis. This completes the
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
 
+\textbf{Definition : Independent Events} \\
+Events $A$ and $B$ are independent if and only if \\
+$$P(A \cap B) = P(A) P(B)  $$
+
+\textbf{Definition : Mutually Exclusive Events} \\
+Events $A$ and $B$ are Mutually Exclusivet if and only if \\
+$$P(A \cap B) = 0  $$
+
+$P(A \cap B) = P(A) P(B)  $ and $P(A \cap B) = 0  $ if and only if $P(A) = 0$ or $P(B) = 0$
+
+Hence, if $A$ and $B$ are mutually exclusive events, they are independent if and only if $P(A) = 0$ or $P(B) = 0$.
 \section{Question 4 - (2-16)}
 \label{Q4}
 \textbf{2-16}  A box contains $n$ identical balls numbered 1 through $n$. Suppose $k$ balls are drawn in succession. (a) What is the probability that $m$ is the largest number drawn? (b) What is the probability that the largest number drawn is less than or equal to $m$?  : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+This is an example of sampling without replacement and without ordering. Let $N$ be the total number of possible outcomes, which is equal to the number of ways in which we can select $k$ out of $n$ balls. Therefore,
+\begin{equation*}
+    N\ = \ {n \choose k }
+\end{equation*}
+Now, for $m$ to be the largest number picked (call this event $A_m$), the ball numbered $m$ must be one of the $k$ balls drawn and the other $k-1$ balls should come from the first $m-1$ balls. So, if $N_{A_m}$ represents number of favourable outcomes for event $A$,
+\begin{equation*}
+    N_{A_m}\ =\ {m-1 \choose k-1}
+\end{equation*}
+So, we get:
+\begin{equation*}
+\begin{split}
+Pr(A_m) & = \frac{N_{A_m}}{N} \\
+ & = \frac{{m-1 \choose k-1}}{{n \choose k }} 
+\end{split}
+\end{equation*}
+Now if $B$ represents the event that the largest number drawn is less than or equal to $m$, we have
+\begin{equation*}
+\begin{split}
+    Pr(B) & =\ \sum_{i=k}^{m} P(A_i) \\
+            &=\ \sum_{i=k}^{m} \frac{{i-1 \choose k-1}}{{n \choose k}} \\
+            &=\ \frac{{k-1 \choose k-1} + {k \choose k-1} + \dots + {m-1 \choose k-1}}{{n \choose k}} \\
+            &=\ \frac{{m \choose k }}{{n \choose k}}
+\end{split}
+\end{equation*}
+We summed up the expression in the second last step by writing ${k-1 \choose k-1}$ as ${k \choose k}$ (since both are equal to 1) and then applying the reduction formula: ${n \choose r}\ +\ {n \choose r-1}\ =\ {n+1 \choose r}$ repetitively.
 
 \section{Question 5 - (2-17)}
 \label{Q5}
 \textbf{2-17}  Suppose $k$ identical boxes contain $n$ balls numbered 1 through $n$. One ball is drawn from each box. What is the probability that $m$ is the largest number drawn?  : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+Let $A$ be the event that the largest number drawn is $m$, and $B$ be the event that each number drawn is less than or equal to $m$. We need to find $P(A)$. The event $B$ is an intersection on $k$ independent events, the $i^{th}$ event being that the number drawn from $i^{th}$ box is less than or equal to $m$, and the probability of this event is simply $\frac{m}{n}$. Thus we get,
+\begin{equation*}
+    Pr(B)\ =\ \Big(\frac{m}{n}\Big)^k
+\end{equation*}
+\subsection*{Method 1}
+Clearly, $Pr(A\ |\ \overline{B})\ =\ 0$. For $Pr(A|B)$, there are $k$ numbers drawn and each belongs to $[1,m]$ so total number of possible outcomes $N\ =\ m^k$. The outcomes where no $m$ has been drawn are unfavourable, and those are $\overline{N}\ = (m-1)^k$. So we get number of favourable outcomes $N_{A|B}\ =\ N\ -\ N_{A|B}\ =\ m^k\ -\ (m-1)^k$. Hence, 
+\begin{equation*}
+    Pr(A|B)\ = \ \frac{m^k\ -\ (m-1)^k}{m^k}
+\end{equation*}
+So, by the Total Probability Law,
+\begin{equation*}
+\begin{split}
+Pr(A)\ &= \ Pr(A|B)Pr(B)\ +\ Pr(A|\overline{B})Pr(\overline{B}) \\
+       &= \ \frac{m^k\ -\ (m-1)^k}{m^k} \times \Big(\frac{m}{n}\Big)^k \\
+       &= \ \frac{m^k\ -\ (m-1)^k}{n^k}
+\end{split}
+\end{equation*}
+
+\subsection*{Method 2}
+We notice that event $A$ is a subset of event $B$. So $B\ = A\ + B\overline{A}$, where $A$ and $B\overline{A}$ are mutually exclusive events. 
+Also for $B\overline{A}$, we need $k$ balls to be chosen, with the number of each being less than $m$, i.e. from $[1,m-1]$ and total possible outcomes are $n^k$ as before. So,
+\begin{equation*}
+    Pr(B\overline{A})\ =\ \frac{(m-1)^k}{n^k}
+\end{equation*}
+Since $A$ and $B\overline{A}$ are mutually exclusive and exhaustive parts of $B$, we have
+\begin{equation*}
+    Pr(B)\ =\ Pr(B\overline{A})\ +\ Pr(A)
+\end{equation*}
+\begin{equation*}
+    \begin{split}
+        Pr(A) &=\ Pr(B)\ -\ Pr(B\overline{A}) \\
+              &=\ \Big(\frac{m}{n}\Big)^k\ -\ \frac{(m-1)^k}{n^k} \\
+              &=\ \frac{m^k\ -\ (m-1)^k}{n^k}
+    \end{split}
+\end{equation*}
 
 \section{Question 6 - (2-19)}
 \label{Q6}
 \textbf{2-19} A box contains $m$ white and $n$ black balls. Suppose k balls are drawn. Find the probability of drawing at least one white ball.  : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+Let us find the probability that none of the $k$ balls drawn is white (call this event $\overline{A}$). We want to find $Pr(A)$. There are total $m+n$ balls out of which $k$ are drawn. So total number of possible outcomes = ${ m+n \choose k}$. For no ball to be white, we need each ball to  come from the $n$ black balls. So, number of favourable outcomes (for $\overline{A}$)\ =\ ${ n \choose k}$. Thus,
+\begin{equation*}
+    Pr(\overline{A})\ =\ \frac{{n \choose k}}{{m+n \choose k}}
+\end{equation*}
+And thus, 
+\begin{equation*}
+    Pr(A)\ =\ 1\ -\ \frac{{n \choose k}}{{m+n \choose k}}
+\end{equation*}
 
 \section{Question 7 - (2-24)}
 \label{Q7}
@@ -151,10 +255,22 @@ where in the last line we have used the inductive hypothesis. This completes the
 
 \section{Question 11}
 \label{Q11}
-\textbf{11} Numbers $1, 2, 3, 4, 5, and 6$ are randomly placed on a circle. What is the probability that they are placed in increasing order?  : \\
+\textbf{11} Numbers $1, 2, 3, 4, 5, \text{ and } 6$ are randomly placed on a circle. What is the probability that they are placed in increasing order?  : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
-
+Since we are arranging the numbers in a circle and we are interested in their order, the total number of arrangements($N$) are :
+$$ N = (6-1)! = 120$$
+The numbers 1 to 6 can increase in both clockwise and anti - clockwise direction, the total number of favorable outcomes($N_f$) for arranging numbers 1 to 6 in an increasing order are 2.
+$$ N_f  = 2 $$
+Hence, the probability of Event (E) of Arranging numbers 1,2,3,4,5 and 6 on a circle in an increasing order is :
+\begin{align*}
+	P(E) &= \frac{\text{the total number of favorable outcome}}{\text{total number of arrangements}} \\
+	&= \frac{N_f}{N} = \frac{2}{120} \\
+	&= \frac{1}{60} \\
+\end{align*}
+\begin{remark}
+If we consider that the numbers can increase in only a particular direction then the total number of favourable outcomes is only 1 and the probability changes to $\frac{1}{120}$.
+\end{remark}
 \section{Question 12}
 \label{Q12}
 \textbf{12} $A$ and $B$ play the following game of dice. Both roll their dice. If $B$ rolls a one, then it rolls again and keeps whatever appears. The one with the highest value wins. If there is a tie $A$ wins. What is the probability that $A$ wins the game. : \\
