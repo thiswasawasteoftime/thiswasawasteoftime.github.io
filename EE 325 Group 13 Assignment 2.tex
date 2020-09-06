@@ -91,9 +91,9 @@ $$ P(A_1 \cup A_2 \dots A_n) = \sum_{i=1}^{n}P(A_i)  -  \sum_{\substack{i,j =1 \
 	Now we can apply the equation of union of two sets to the two events $A_n$ and $(A_1 \cup A_2 \dots A_{n-1})$ to deduce that : \\
 	
 	$$P((A_1 \cup A_2 \dots A_{n-1}) \cup A_n) = P(A_1 \cup A_2 \dots A_{n-1}) + P(A_n) - P((A_1 \cup A_2 \dots A_{n-1}) \cap A_n) \text{(using \ref{(1)})}$$
-	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(n)$$ \\  $   - P((A_1 \cup A_2 \dots A_{n-1}) \cap A_n) $  (using \ref{(2)})\\
-	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(n)$$ \\  $   - P((A_1 \cap A_n) \cup (A_2 \cap A_n) \cup \dots (A_{n-1} \cap A_n)) \text{(using distributive property of $\cap$ and $\cup$)}$ \\
-	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(n)$$ \\  $$   - \Big(\sum_{i=1}^{n-1}P(A_i  A_n) + \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j A_n) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k A_n) + \dots (-1)^{n}P(A_1 A_2 \dots A_{n-1} A_n)\Big)$$\\  (using \ref{(2)})\\
+	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(A_n)$$ \\  $   - P((A_1 \cup A_2 \dots A_{n-1}) \cap A_n) $  (using \ref{(2)})\\
+	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(A_n)$$ \\  $   - P((A_1 \cap A_n) \cup (A_2 \cap A_n) \cup \dots (A_{n-1} \cap A_n)) \text{(using distributive property of $\cap$ and $\cup$)}$ \\
+	$$= \Big(\sum_{i=1}^{n-1}P(A_i) - \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k) + \dots   (-1)^{n}P(A_1 A_2 \dots A_{n-1})\Big) + P(A_n)$$ \\  $$   - \Big(\sum_{i=1}^{n-1}P(A_i  A_n) + \sum_{\substack{i,j =1 \\ i \neq j}}^{n-1}P(A_i A_j A_n) + \sum_{\substack{i,j,k = 1  \\ i \neq j \neq k}}^{n-1}P(A_i A_j A_k A_n) + \dots (-1)^{n}P(A_1 A_2 \dots A_{n-1} A_n)\Big)$$\\  (using \ref{(2)})\\
 	$$ =\sum_{i=1}^{n}P(A_i)  -  \sum_{\substack{i,j =1 \\ i \neq j}}^{n}P(A_i A_j)  +  \sum_{\substack{i,j,k = 1 \\ i \neq j \neq k}}^{n}P(A_i A_j A_k)  +  \dots   (-1)^{n+1}P(A_1 A_2 \dots A_n) $$
 		
 where in the last line we have used the inductive hypothesis. This completes the proof by induction.
@@ -137,7 +137,7 @@ Events $A$ and $B$ are independent if and only if \\
 $$P(A \cap B) = P(A) P(B)  $$
 
 \textbf{Definition : Mutually Exclusive Events} \\
-Events $A$ and $B$ are Mutually Exclusivet if and only if \\
+Events $A$ and $B$ are Mutually Exclusive if and only if \\
 $$P(A \cap B) = 0  $$
 
 $P(A \cap B) = P(A) P(B)  $ and $P(A \cap B) = 0  $ if and only if $P(A) = 0$ or $P(B) = 0$
