@@ -184,7 +184,7 @@ Let $A$ be the event that the largest number drawn is $m$, and $B$ be the event 
     Pr(B)\ =\ \Big(\frac{m}{n}\Big)^k
 \end{equation*}
 \subsection*{Method 1}
-Clearly, $Pr(A\ |\ \overline{B})\ =\ 0$. For $Pr(A|B)$, there are $k$ numbers drawn and each belongs to $[1,m]$ so total number of possible outcomes $N\ =\ m^k$. The outcomes where no $m$ has been drawn are unfavourable, and those are $\overline{N}\ = (m-1)^k$. So we get number of favourable outcomes $N_{A|B}\ =\ N\ -\ N_{A|B}\ =\ m^k\ -\ (m-1)^k$. Hence, 
+Clearly, $Pr(A\ |\ \overline{B})\ =\ 0$. For $Pr(A|B)$, there are $k$ numbers drawn and each belongs to $[1,m]$ so total number of possible outcomes $N\ =\ m^k$. The outcomes where no $m$ has been drawn are unfavourable, and those are $\overline{N}\ = (m-1)^k$. So we get number of favourable outcomes $N_{A|B} = N -\overline{N}_{A|B} = m^k - (m-1)^k$. Hence, 
 \begin{equation*}
     Pr(A|B)\ = \ \frac{m^k\ -\ (m-1)^k}{m^k}
 \end{equation*}
@@ -253,6 +253,9 @@ And thus,
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
 
+    If $N < k$, the number of ways in which all the lecturers would have taught at least once would be zero. Hence, we’ll assume N $\geq$ k.
+
+
 \section{Question 11}
 \label{Q11}
 \textbf{11} Numbers $1, 2, 3, 4, 5, \text{ and } 6$ are randomly placed on a circle. What is the probability that they are placed in increasing order?  : \\
@@ -271,12 +274,40 @@ Hence, the probability of Event (E) of Arranging numbers 1,2,3,4,5 and 6 on a ci
 \begin{remark}
 If we consider that the numbers can increase in only a particular direction then the total number of favourable outcomes is only 1 and the probability changes to $\frac{1}{120}$.
 \end{remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Question 12}
 \label{Q12}
 \textbf{12} $A$ and $B$ play the following game of dice. Both roll their dice. If $B$ rolls a one, then it rolls again and keeps whatever appears. The one with the highest value wins. If there is a tie $A$ wins. What is the probability that $A$ wins the game. : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+    Sample space for rolling a die = {1, 2, 3, 4, 5, 6} = $\Omega$
+    
+    Player $A$ rolls each of the outcomes with an equal probability of 1/6.\\
+    Let,\\
+    $B_{11}$ be the event that player $B$ rolls a one in his first throw.\\
+    $B_i$ be the event that $i$ is decided as player $B$'s final value.\\
+    
+    Using the 'Total Probability law' :
+\begin{equation*}
+    P(B_i) = P(B_{11})P(B_i|B_{11}) + P(\overline{B_{11}})P(B_i|\overline{B_{11}})
+\end{equation*}
+We can find $P(B_i)$ for $i\in \Omega$ using the above equation
+\begin{align*}
+    P(B_1)=\frac{1}{6}\times\frac{1}{6}+\frac{5}{6}\times0=\frac{1}{6}\\
+    P(B_2)=P(B_3)=P(B_4)=P(B_5)=P(B_6)&=\frac{1}{6}\times\frac{1}{6}+\frac{5}{6}\times\frac{1}{5}\\
+    &=\frac{7}{36}
+\end{align*}
+Let $A$ be the event that player $A$ wins. He wins if he rolls a value $\geq B$
 
+\begin{align*}
+    \Rightarrow P(A|B_i) &= \frac{6-i+1}{6}\\
+    &= \frac{7-i}{6}\\
+    \text{Finally, we have}\\
+    P(A)&=\sum^6_{i=0} P(B_i)P(A|B_i)\\
+    &= \frac{1}{36}\Big(\frac{6}{6}\Big)+\frac{7}{36}\Big(\frac{5}{6}+\frac{4}{6}+\frac{4}{6}+\frac{3}{6}+\frac{2}{6}+\frac{1}{6}\Big)\\
+    &=\frac{37}{72}
+\end{align*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Question 13}
 \label{Q13}
 \textbf{13}There are $R$ brown balls and $B$ black balls in an urn. Balls are drawn at random without replacement. Let $A_k$ be the event that a brown ball is drawn for the first time on the $k$-th draw. Find $p_k$, the probability of $A_k$. Now consider the case when $B$ and $R$ are increased to $\infty$ while keeping $\alpha = R/(B + R).$ Find $p_k$ as $B + R \rightarrow \infty$. : \\
