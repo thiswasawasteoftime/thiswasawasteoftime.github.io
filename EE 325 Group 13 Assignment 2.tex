@@ -236,6 +236,43 @@ And thus,
 \textbf{2-24}  Box 1 contains 1000 bulbs of which 10\% are defective. Box 2 contains 2000 bulbs of which 5\% are defective. Two bulbs are picked from a randomly selected box. (a) Find the probability that both bulbs are defective. (b) Assuming that both are defective, find the probability that they came from box 1.  : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+Let $B_i$ be the event that the box chosen is box $i$. So we have $B_2 \equiv \overline{B_1}$ and $P(B_1)\ =\ P(B_2)\ =\ 0.5$. Let $D_i$ be the event that the $i^{th}$ bulb is defective and for simplicity let $D\ =\  D_1D_2$ that is the event that both bulbs selected are defective. According to the given data, 100 bulbs in box $1$ and 100 bulbs in box $2$ are defective. Therefore,
+\begin{equation*}
+    P(D_1|B_1)=\frac{100}{1000}= 0.1,\ \ P(D_2|B_1,D_1) = \frac{99}{999} = \frac{11}{111}
+\end{equation*}
+So we get
+\begin{equation*}
+    \begin{split}
+        P(D|B_1)\ &=\ P(D_1 D_2|B_1)\\
+                 &=\ P(D_1|B_1)\ \times\ P(D_2|B_1,D_1)\\
+                 &=\ 0.1\ \times \frac{11}{111}\\
+                 &=\ 0.00991\\
+    \end{split}
+\end{equation*}
+Similarly, we get
+\begin{equation*}
+    \begin{split}
+        P(D|B_2)\ &=\ \frac{100}{2000}\ \times \frac{99}{1999}\\
+                  &=\ 0.00248\\
+    \end{split}
+\end{equation*}
+\textbf{a)} We want to find $P(D)$. Since $B_1$ and $B_2$ are complements of each other, we can use the total probability rule as follows:
+\begin{equation*}
+    \begin{split}
+        P(D)\ &=\ P(D_1|B_1)P(B_1)\ +\ P(D_1|B_2)P(B_2)\\
+              &=\ 0.00991 \times 0.5\ +\ 0.00248 \times 0.5\\
+              &=\ 0.00620
+    \end{split} 
+\end{equation*}
+
+\textbf{b)} Here, we need to find $P(B_1|D)$. Using Bayes Theorem.
+\begin{equation*}
+    \begin{split}
+        P(B_1|D)\ &=\ \frac{P(D|B_1)P(B_1)}{P(D)} \\
+              &=\ \frac{0.00991}{0.00620}\\
+              &=\ 0.80
+    \end{split} 
+\end{equation*}
 
 \section{Question 8 - (2-25)}
 \label{Q8}
@@ -264,7 +301,7 @@ We can plot a graph with $t_T$ on $x-axis$ and $t_B$ on $y-axis$ and find the re
 \end{figure}
     $$P(T\cup B) = \frac{\text{Area of shaded region}}{\text{Area of the } 60 \times 60 \text{ square region}}$$\\
 \begin{align*}
-    P(T\cup B) &= \frac{60\times 60 - \Big(\frac{(50-0)(60-10)}{2}+\frac{(60-x)(x)}{2}\Big)}{60\times 60}\\
+    P(T\cup B) &= \frac{60\times 60 - \Big(\dfrac{(50-0)(60-10)}{2}+\dfrac{(60-x)(x)}{2}\Big)}{60\times 60}\\
     &=\frac{x^2 - 120x + 6100}{7200}
 \end{align*}
 
@@ -280,6 +317,18 @@ $$x = (60 - 10\sqrt{11})$$
 \textbf{2-27} We have two coins; the first is fair and the second two-headed. We pick one of the coins at random, we toss it twice and heads shows both times. Find the probability that the coin picked is fair.  : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+In this experiment we have 8 outcomes. Each outcome is a selection of a particular coin and a specific sequence of heads or tails. For example, $FNN$ corresponds to selecting the fair coin followed by getting two heads. Let $F$ be the event that the selected coin is fair. So, given $F$ happens, we will have four possible outcomes: $FHH,\ FHT,\ FTH,$ and $FTT$. If $\overline{F}$ happens then we have only one outcome: $\overline{F}HH$, since the other coin is two headed. So, we have the following quantities:
+\begin{equation*}
+    P(F)\ =\ P(\overline{F})\ =\ \frac{1}{2},\ \ P(HH|F)\ =\ \frac{1}{4},\ \ P(HH|\overline{F})\ =\ 1  
+\end{equation*}
+We need to find $P(F|HH)$. So using Bayes' Rule, we get:
+\begin{equation*}
+    \begin{split}
+        P(F|HH)\ &= \frac{P(HH|F)P(F)}{P(HH|F)P(F)\ +\ P(HH|\overline{F})P(\overline{F})} \\
+                 &= \frac{   \frac{1}{4} \times  \frac{1}{2}   }{   \frac{1}{4} \times  \frac{1}{2}\ +\ 1 \times  \frac{1}{2}    }\\
+                 &= \frac{1}{5}\ =\ 0.2
+    \end{split}
+\end{equation*}
 
 \section{Question 10}
 \label{Q10}
@@ -325,7 +374,7 @@ If we consider that the numbers can increase in only a particular direction then
 \end{equation*}
 We can find $P(B_i)$ for $i\in \Omega$ using the above equation
 \begin{align*}
-    P(B_1)=\frac{1}{6}\times\frac{1}{6}+\frac{5}{6}\times0=\frac{1}{6}\\
+    P(B_1)=\frac{1}{6}\times\frac{1}{6}+\frac{5}{6}\times0=\frac{1}{36}\\
     P(B_2)=P(B_3)=P(B_4)=P(B_5)=P(B_6)&=\frac{1}{6}\times\frac{1}{6}+\frac{5}{6}\times\frac{1}{5}\\
     &=\frac{7}{36}
 \end{align*}
@@ -335,7 +384,7 @@ Let $A$ be the event that player $A$ wins. He wins if he rolls a value $\geq B$
     \Rightarrow P(A|B_i) &= \frac{6-i+1}{6}\\
     &= \frac{7-i}{6}\\
     \text{Finally, we have}\\
-    P(A)&=\sum^6_{i=0} P(B_i)P(A|B_i)\\
+    P(A)&=\sum^6_{i=1} P(B_i)P(A|B_i)\\
     &= \frac{1}{36}\Big(\frac{6}{6}\Big)+\frac{7}{36}\Big(\frac{5}{6}+\frac{4}{6}+\frac{4}{6}+\frac{3}{6}+\frac{2}{6}+\frac{1}{6}\Big)\\
     &=\frac{37}{72}
 \end{align*}
@@ -345,7 +394,48 @@ Let $A$ be the event that player $A$ wins. He wins if he rolls a value $\geq B$
 \textbf{13}There are $R$ brown balls and $B$ black balls in an urn. Balls are drawn at random without replacement. Let $A_k$ be the event that a brown ball is drawn for the first time on the $k$-th draw. Find $p_k$, the probability of $A_k$. Now consider the case when $B$ and $R$ are increased to $\infty$ while keeping $\alpha = R/(B + R).$ Find $p_k$ as $B + R \rightarrow \infty$. : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+Let us find the probability that the first $'k-1'$ balls drawn are black(call this event $B$).\\
+Total no. of possible outcomes($N$) are:
+$$N = {{B+R}\choose {k-1}}$$
+Favourable outcomes($N_f$):
+\begin{align*}
+    N_f &= {B\choose {k-1}}\\
+\Rightarrow 
+P(B)&=\frac{{B\choose {k-1}}}{{{B+R}\choose {k-1}}}
+\end{align*}
 
+If $R_k$ is the event that the $k^{th}$ ball drawn is brown, by the definition of conditional probability, we can write:
+\begin{align*}
+    P(R_k|B)&=\frac{\text{No. of brown balls left \textit{after} $B$ has occurred}}{\text{Total no. of balls left \textit{after} $B$ has occurred}}\\
+    &=\frac{R}{(B+R)-(k-1)}\\
+    &=\frac{R}{B+R-k+1}
+\end{align*}
+Clearly, $A_k=B\cap R$. Therefore,
+\begin{align*}
+    P(A_k)&=P(B\cap R_k)\\&= P(B)P(R_k|B)\\
+    &=\dfrac{{B\choose {k-1}}}{{{B+r}\choose{k-1}}}\Big(\frac{R}{B+R-k+1}\Big)=p_k
+\end{align*}
+If $B, R \rightarrow \infty$, $\alpha = \dfrac{R}{B+R}$ ($k$ is finite)
+\begin{align}
+    p_k &= \dfrac{\dfrac{B!}{(B-k+1)!(k-1)!}}{\dfrac{(B+R)!}{(B+R-k+1)!(k-1)!}}\Big(\dfrac{R}{B+R-k+1}\Big)\nonumber\\
+    &=\dfrac{B(B-1)(B-2)\dots(B-(k-2))}{(B+R)(B+R-1)\dots(B+R-(k-2)}\Big(\frac{R}{B+R-(k-1)}\Big)
+\end{align}
+We'll find the limit of this expression as $B,R\to\infty$ :
+\begin{align}
+    \lim_{B,R\to \infty}\prod^{k-2}_{i=0}\Big(\frac{B-i}{B+R-i}\Big) &= \prod^{k-2}_{i=0}\lim_{B,R\to\infty}\Big(\frac{B-i}{B+R-i}\Big)\nonumber\\
+    &=\prod^{k-2}_{i=0}\lim_{B,R\to\infty}\Big(\frac{B}{B+R}\Big) \nonumber\\
+   &=\prod^{k-2}_{i=0}\lim_{B,R\to\infty}\Big(1-\frac{R}{B+R}\Big)\nonumber\\
+   &=\prod^{k-2}_{i=0}(1-\alpha) = (1-\alpha)^{k-1}\\
+   \lim_{B,R\to \infty}\Big(\frac{R}{B+R-(k-1)}\Big)
+   &= \lim_{B,R\to \infty}\Big(\frac{R}{B+R}\Big)\nonumber\\
+   &= \alpha
+\end{align}
+Therefore, we have
+\begin{align*}
+  p_k &= \lim_{B,R\to \infty}\Big(\Big(\prod^{k-2}_{i=0}\Big(\frac{B-i}{B+R-i}\Big)\Big)\times\Big(\frac{R}{B+R-(k-1)}\Big)\Big)\\
+  &=\lim_{B,R\to \infty}\prod^{k-2}_{i=0}\Big(\frac{B-i}{B+R-i}\Big)\times\lim_{B,R\to \infty}\Big(\frac{R}{B+R-(k-1)}\Big)\\
+  p_k &= (1-\alpha)^{k-1}\alpha
+\end{align*}
 \section{Question 14}
 \label{Q14}
 \textbf{14} There are $n$ of which the $r$-th urn contains $r - 1$ brown balls and $n - r$ black balls. You pick an urn at random and pick two balls at random without replacement. What is the probability that the second ball is black. What is conditional probability that the second ball is black given that the first ball is black.  : \\
@@ -357,16 +447,34 @@ Let $A$ be the event that player $A$ wins. He wins if he rolls a value $\geq B$
 \label{Q15}
 \textbf{15} \textbf{Prosecutor’s fallacy} : Let $G$ be the probability that an accused is guilty, and $T$ that the testimony of a witness is true. Many times it is argued that $Prob (G \mid T) = Prob (T \mid G)$. Show that this is true iff $Prob (G) = Prob (T).$ : \\ 
 
-
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
-
+    This can be proved by applying the Conditional Probability law:
+    $$P(A|B) = \frac{P(A\cap B)}{P(B)}$$
+\begin{align*}
+    \text{If, } P(G) &= P(T)\\
+    P(G|T)&=\frac{P(G\cap T)}{P(T)}\\
+    &=\frac{P(T\cap G)}{P(G)}\\
+    &=P(T|G)
+\end{align*}
+The converse can also be easily proved since  $P(G),P(T),P(G\cap T)\neq0$
 \section{Question 16}
 \label{Q16}
 \textbf{16} \textbf{Extra credit}: 10\% of the surface area of a sphere is white and the rest is black. There are no assumptions on how this white part is distributed on the surface. Prove that it is always possible to inscribe a cube with all its vertices black. Think of a randomly inscribed cube. Let $A_i$ be the probability a random vertex is white. Now obtain an upper bound on the probability that at least one of the vertices is white. Show that this strictly less than one. This proves that there is at least one cube with all black vertices.
  : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+Consider a random cube and one of the vertices of it (say vertex $1$). Let $W_i$ be the event that vertex $i$ is white. So we directly have $P(W_1)\ =\ 0.1$, Similarly, we have $P(W_2)\ =\ P(W_3)\ =\ \dots\ =\ P(W_8)\ =\ 0.1$. Also, consider the probability that at least one vertex of the cube is white which is given by $P(W_1\cup W_2\cup \dots \cup W_8)\ $. Now we use the following inequality:  
+\begin{alignat*}{1}
+    P(W_1\cup W_2\cup \dots \cup W_8)\ &\leq \ P(W_1)\ +\ P(W_2)\ +\ \dots\ +\ P(W_8)\\
+                                    &\leq\ 0.1\ +\ 0.1\ +\ \dots\ +\ 0.1 \\
+                                    &\leq\ 0.8\\
+\end{alignat*}
+Now, let $B$ be the event that all vertices are black. Therefore $B\ =\ \overline{W_1\cup W_2\cup \dots \cup W_8}$, and $P(W_1\cup W_2\cup \dots \cup W_8)\ =\ 1\ -\ P(B)$. Therefore,
 
+\begin{equation*}
+    1\ -\ P(B)\ \leq\ 0.8\ \Longrightarrow P(B)\ \geq\ 0.2\ > 0
+\end{equation*}
+Therefore, the probability of all vertices being black is non-zero (in fact greater than or equal to 0.2). Also our sample space (consisting of all possible orientations of the inscribed cube) has infinite elements since the inscribed cube can be oriented in any manner, so by the classical definition of probability, we can say that there exists at least one orientation of the cube for which $B$ happens, that is, all vertices are black. 
 
 
 
