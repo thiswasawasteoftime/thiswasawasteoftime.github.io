@@ -186,7 +186,7 @@ Let $A$ be the event that the largest number drawn is $m$, and $B$ be the event 
     Pr(B)\ =\ \Big(\frac{m}{n}\Big)^k
 \end{equation*}
 \subsection*{Method 1}
-Clearly, $Pr(A\ |\ \overline{B})\ =\ 0$. For $Pr(A|B)$, there are $k$ numbers drawn and each belongs to $[1,m]$ so total number of possible outcomes $N\ =\ m^k$. The outcomes where no $m$ has been drawn are unfavourable, and those are $\overline{N}\ = (m-1)^k$. So we get number of favourable outcomes $N_{A|B}\ =\ N\ -\ N_{A|B}\ =\ m^k\ -\ (m-1)^k$. Hence, 
+Clearly, $Pr(A\ |\ \overline{B})\ =\ 0$. For $Pr(A|B)$, there are $k$ numbers drawn and each belongs to $[1,m]$ so total number of possible outcomes $N\ =\ m^k$. The outcomes where no $m$ has been drawn are unfavourable, and those are $\overline{N}\ = (m-1)^k$. So we get number of favourable outcomes $N_{A|B}\ =\ N\ -\ \overline{N_{A|B}}\ =\ m^k\ -\ (m-1)^k$. Hence, 
 \begin{equation*}
     Pr(A|B)\ = \ \frac{m^k\ -\ (m-1)^k}{m^k}
 \end{equation*}
