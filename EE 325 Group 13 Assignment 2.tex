@@ -10,6 +10,8 @@
 \usepackage[parfill]{parskip}
 \usepackage{hyperref}
 \usepackage{url}
+\usepackage{floatrow}
+\usepackage{graphicx}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -184,7 +186,7 @@ Let $A$ be the event that the largest number drawn is $m$, and $B$ be the event 
     Pr(B)\ =\ \Big(\frac{m}{n}\Big)^k
 \end{equation*}
 \subsection*{Method 1}
-Clearly, $Pr(A\ |\ \overline{B})\ =\ 0$. For $Pr(A|B)$, there are $k$ numbers drawn and each belongs to $[1,m]$ so total number of possible outcomes $N\ =\ m^k$. The outcomes where no $m$ has been drawn are unfavourable, and those are $\overline{N}\ = (m-1)^k$. So we get number of favourable outcomes $N_{A|B} = N -\overline{N}_{A|B} = m^k - (m-1)^k$. Hence, 
+Clearly, $Pr(A\ |\ \overline{B})\ =\ 0$. For $Pr(A|B)$, there are $k$ numbers drawn and each belongs to $[1,m]$ so total number of possible outcomes $N\ =\ m^k$. The outcomes where no $m$ has been drawn are unfavourable, and those are $\overline{N}\ = (m-1)^k$. So we get number of favourable outcomes $N_{A|B}\ =\ N\ -\ N_{A|B}\ =\ m^k\ -\ (m-1)^k$. Hence, 
 \begin{equation*}
     Pr(A|B)\ = \ \frac{m^k\ -\ (m-1)^k}{m^k}
 \end{equation*}
@@ -240,7 +242,39 @@ And thus,
 \textbf{2-25} A train and a bus arrive at the station at random between 9 A.M. and 10 A.M. The train stops for 10 minutes and the bus for $x$ minutes. Find $x$ so that the probability that the bus and the train will meet equals 0.5. : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+    For the train and bus to meet, one of them should
+arrive at the station at a point in the time interval in which the other one is stopped at the station.
 
+Let, $t_B$ and $t_T$ be the times(in minutes) at which the bus and train arrive at the station relative to the 1 hour time interval.
+
+We'll define the events at which they meet as following:\\
+$T : \{t_T < t_B < t_T+10 | \{t_T,t_B\}\in(0,60)\} \text{ is the event in which the train arrives first.}\\
+B : \{t_B < t_T < t_B+x | \{t_T,t_B\}\in(0,60)\}$ is the event in which the bus arrives first.\\
+The event that the bus and train meet at the station is $T\cup B$.\\
+
+$T$ and $B$ are clearly mutually exclusive. Therefore,\\
+$$P(T\cup B) = P(T) + P(B)$$
+
+We can plot a graph with $t_T$ on $x-axis$ and $t_B$ on $y-axis$ and find the regions which satisfy $T$ and $B$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{pics/bustrain.png}
+    \caption{Time of arrival at the station: train v/s bus}
+    \label{fig:my_label}
+\end{figure}
+    $$P(T\cup B) = \frac{\text{Area of shaded region}}{\text{Area of the } 60 \times 60 \text{ square region}}$$\\
+\begin{align*}
+    P(T\cup B) &= \frac{60\times 60 - \Big(\frac{(50-0)(60-10)}{2}+\frac{(60-x)(x)}{2}\Big)}{60\times 60}\\
+    &=\frac{x^2 - 120x + 6100}{7200}
+\end{align*}
+
+We need this expression to be equal to 1/2\\
+\begin{align*}
+    &\Rightarrow \frac{x^2 - 120x + 6100}{7200}=\frac{1}{2}\\
+&\Rightarrow x^2 - 120x + 2500 = 0\\
+\end{align*}
+Solve to get:
+$$x = (60 - 10\sqrt{11})$$ 
 \section{Question 9 - (2-27)}
 \label{Q9}
 \textbf{2-27} We have two coins; the first is fair and the second two-headed. We pick one of the coins at random, we toss it twice and heads shows both times. Find the probability that the coin picked is fair.  : \\
@@ -252,9 +286,7 @@ And thus,
 \textbf{10} A course is taught by four instructors. Before every lecture, the instructors draw lots and one of them is randomly chosen to teach on that day. What is the probability that in N classes, all the lecturers would have taught at least once. Generalise to k instructors teaching the course. : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
-
-    If $N < k$, the number of ways in which all the lecturers would have taught at least once would be zero. Hence, we’ll assume N $\geq$ k.
-
+    If $N < k$, the number of ways in which all the lecturers would have taught at least once would be zero. Hence, we’ll assume $N \geq k$.
 
 \section{Question 11}
 \label{Q11}
