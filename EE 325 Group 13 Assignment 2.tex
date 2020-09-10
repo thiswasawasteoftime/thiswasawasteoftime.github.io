@@ -547,10 +547,20 @@ Therefore, we get:
 \begin{align*}
     \text{If, } P(G) &= P(T)\\
     P(G|T)&=\frac{P(G\cap T)}{P(T)}\\
-    &=\frac{P(T\cap G)}{P(G)}\\
+    &=\frac{P(T\cap G)}{P(G)} \\
+    &= (T \cap G) \equiv (G \cap T) \text{ using commutative property of } (\cap) \\
     &=P(T|G)
 \end{align*}
 The converse can also be easily proved since  $P(G),P(T),P(G\cap T)\neq0$
+
+For the converse, \\
+\begin{align*}
+	\text{If, } P(G|T) &= P(T|G) \\
+	\frac{P(G \cap T)}{P(T)} &= \frac{P(T \cap G)}{P(G)} \\
+	\text{Since, } P(G), P(T) \text{ and }  P(T \cap G) & \neq 0 \\
+	\text{Hence, } P(T) &= P(G)
+\end{align*}
+
 \section{Question 16}
 \label{Q16}
 \textbf{16} \textbf{Extra credit}: 10\% of the surface area of a sphere is white and the rest is black. There are no assumptions on how this white part is distributed on the surface. Prove that it is always possible to inscribe a cube with all its vertices black. Think of a randomly inscribed cube. Let $A_i$ be the probability a random vertex is white. Now obtain an upper bound on the probability that at least one of the vertices is white. Show that this strictly less than one. This proves that there is at least one cube with all black vertices.
