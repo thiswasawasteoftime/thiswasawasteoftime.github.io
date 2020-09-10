@@ -335,7 +335,44 @@ We need to find $P(F|HH)$. So using Bayes' Rule, we get:
 \textbf{10} A course is taught by four instructors. Before every lecture, the instructors draw lots and one of them is randomly chosen to teach on that day. What is the probability that in N classes, all the lecturers would have taught at least once. Generalise to k instructors teaching the course. : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
-    If $N < k$, the number of ways in which all the lecturers would have taught at least once would be zero. Hence, we’ll assume $N \geq k$.
+    If $N < k$, the number of ways in which all the lecturers would have taught at least once would be zero. Hence, we’ll assume $N \geq k$. \\
+Total number of ways in which the classes can be assigned = $k^N$ (k instructors are sampled with replacement and with ordering) \\
+Let, $L_i$ denote the event that the instructor '$i$' does not teach any class. \\
+
+The event we require is $A = \overline{L_1 \cup L_2 |cup \dots L_k}$ \\
+
+We have already proved in Question 1 (2-5) that : \\
+$$ P(A_1 \cup A_2 \dots A_n) = \sum_{i=1}^{n}P(A_i)  -  \sum_{\substack{i,j =1 \\ i \neq j}}^{n}P(A_i A_j)  +  \sum_{\substack{i,j,k = 1 \\ i \neq j \neq k}}^{n}P(A_i A_j A_k)  +  \dots   (-1)^{n+1}P(A_1 A_2 \dots A_n)$$
+
+\begin{equation}
+\label{(3)}
+ P(\overline{A}) = \sum_{i=1}^{k}P(L_i)  -  \sum_{\substack{i,j =1 \\ i \neq j}}^{k}P(L_i L_j)  +  \sum_{\substack{i,j,l = 1 \\ i \neq j \neq l}}^{k}P(L_i L_j L_l)  +  \dots   (-1)^{k+1}P(L_1 L_2 \dots L_k)
+\end{equation}
+
+$\{L_i\} \forall   i \in \{1,2, \dots \} \text{are equally probable events and the same applies to} \{L_i L_j\} \text{and so on.}$ \\
+\begin{align*}
+P(L_i) &= \frac{\text{Number of ways to assign (k-1) lecturers}}{\text{Number of ways to assign k lecturers}}
+ &= \frac{(k-1)^n}{k^n}
+\end{align*}
+
+Similarly,$$P(L_i L_j) = \frac{(k-2)^n}{k^n}$$
+and so on. \\
+
+Using \ref{(3)}
+$$P(\overline{A}) = {k \choose 1} \times \frac{(k-1)^n}{k^n} - {k \choose 2} \times \frac{(k-2)^n}{k^n} + {k \choose 3} \times \frac{(k-3)^n}{k^n} \dots (-1)^k {k \choose k-1} \times \frac{(1)^n}{k^n} + 0$$
+
+$ P(A) = 1 - P(\overline{A}) $ \\
+$$ P(A) = 1 - \Bigg({k \choose 1} \times \frac{(k-1)^n}{k^n} - {k \choose 2} \times \frac{(k-2)^n}{k^n} + {k \choose 3} \times \frac{(k-3)^n}{k^n} \dots (-1)^k {k \choose k-1} \times \frac{(1)^n}{k^n} \Bigg)$$
+
+$$ P(A) = 1 - \Bigg({k \choose 1} \times \frac{(k-1)^n}{k^n} - {k \choose 2} \times \frac{(k-2)^n}{k^n} + {k \choose 3} \times \frac{(k-3)^n}{k^n} \dots (-1)^k {k \choose k-1} \times \frac{(1)^n}{k^n} \Bigg)$$
+
+Hence, for 4 instructors, substitute $ k = 4 $ \\
+\begin{align*}
+P(A) &= 1 - \Bigg({4 \choose 1} \times \bigg(\frac{3}{4}\bigg)^n - {4 \choose 2} \times \bigg(\frac{2}{4}\bigg)^n + {4 \choose 3} \times \bigg(\frac{1}{4}\bigg)^n \Bigg) \\
+& = 1 - \Bigg(4 \times \bigg(\frac{3}{4}\bigg)^n - 6 \times \bigg(\frac{2}{4}\bigg)^n + 4 \times \bigg(\frac{1}{4}\bigg)^n \Bigg)
+\end{align*}
+
+
 
 \section{Question 11}
 \label{Q11}
@@ -361,7 +398,7 @@ If we consider that the numbers can increase in only a particular direction then
 \textbf{12} $A$ and $B$ play the following game of dice. Both roll their dice. If $B$ rolls a one, then it rolls again and keeps whatever appears. The one with the highest value wins. If there is a tie $A$ wins. What is the probability that $A$ wins the game. : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
-    Sample space for rolling a die = {1, 2, 3, 4, 5, 6} = $\Omega$
+Sample space for rolling a die = \{1, 2, 3, 4, 5, 6\} = $\Omega$
     
     Player $A$ rolls each of the outcomes with an equal probability of 1/6.\\
     Let,\\
@@ -378,22 +415,31 @@ We can find $P(B_i)$ for $i\in \Omega$ using the above equation
     P(B_2)=P(B_3)=P(B_4)=P(B_5)=P(B_6)&=\frac{1}{6}\times\frac{1}{6}+\frac{5}{6}\times\frac{1}{5}\\
     &=\frac{7}{36}
 \end{align*}
-Let $A$ be the event that player $A$ wins. He wins if he rolls a value $\geq B$
-
+Let $A$ be the event that player $A$ wins. He wins if he rolls a value $\geq B$.\\
+Based on this we'll find the probability of $A$ winning if $B$'s final value is $i$.\\(which is $P(A|B_i)$, by the definition of conditional probability)\\
 \begin{align*}
-    \Rightarrow P(A|B_i) &= \frac{6-i+1}{6}\\
-    &= \frac{7-i}{6}\\
-    \text{Finally, we have}\\
+    \text{No.of possible outcomes for $A(N)$} &= 6\\
+    \text{No. of favourable outcomes for $A$ to win($N_f$)} &= 6-i+1\\
+    &= 7-i\\
+\end{align*}
+\begin{align*}
+    P(A|B_i) &= \frac{N}{N_f}\\
+    \Rightarrow P(A|B_i) &= \frac{7-i}{6}\\
+\end{align*}
+Finally, we have
+\begin{align*}
     P(A)&=\sum^6_{i=1} P(B_i)P(A|B_i)\\
-    &= \frac{1}{36}\Big(\frac{6}{6}\Big)+\frac{7}{36}\Big(\frac{5}{6}+\frac{4}{6}+\frac{4}{6}+\frac{3}{6}+\frac{2}{6}+\frac{1}{6}\Big)\\
+    &= \frac{1}{36}\Big(\frac{6}{6}\Big)+\frac{7}{36}\Big(\frac{5}{6}+\frac{4}{6}+\frac{3}{6}+\frac{2}{6}+\frac{1}{6}\Big)\\
     &=\frac{37}{72}
 \end{align*}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Question 13}
 \label{Q13}
 \textbf{13}There are $R$ brown balls and $B$ black balls in an urn. Balls are drawn at random without replacement. Let $A_k$ be the event that a brown ball is drawn for the first time on the $k$-th draw. Find $p_k$, the probability of $A_k$. Now consider the case when $B$ and $R$ are increased to $\infty$ while keeping $\alpha = R/(B + R).$ Find $p_k$ as $B + R \rightarrow \infty$. : \\
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+ 
 Let us find the probability that the first $'k-1'$ balls drawn are black(call this event $B$).\\
 Total no. of possible outcomes($N$) are:
 $$N = {{B+R}\choose {k-1}}$$
@@ -442,6 +488,54 @@ Therefore, we have
 
 
 \hspace{1em} \large{\textbf{SOLUTION :}} \\
+    Let $B$ and $W$ represent black and brown balls respectively.
+    We can pick two balls from an urn without replacement in the following ways:\\ 
+    $$\{\{B,B\},\{B,W\},\{W,B\},\{W,W\}\}$$\\
+    Let $B_1,B_2$ represent the events of picking a black ball in the first and second tries respectively. Similarly, ${W_1}$ and ${W_2}$ are the events of picking a brown ball in the in the first and second tries respectively.\\
+    Probability of selecting the $r^{th}$ urn out of $n$ urns = $P(U_r)=\dfrac{1}{n}$\\
+    We need to find $P(B_2)$.\\
+    We'll find the probability of second pick being a Black ball in a given urn $U_r$:\\
+    In the urn $U_r$:\\
+    $$\text{Total no. of balls} = n-1$$
+    $$\text{No. of black balls} = n-r$$
+\begin{align*}
+    P(B_1|U_r)&=\dfrac{n-r}{n-1}\\
+    P(W_1|U_r)&=\dfrac{r-1}{n-1}\\
+\end{align*}
+    Since $B_1$ and $W_1$ are mutually exclusive and exhaustive events, we can write:
+\begin{align}
+    P(B_2|U_r)&=P((B_1\cap B_2)|U_r) + P((W_1\cap B_2)|U_r)\\
+    &=\dfrac{n-r}{n-1}\Big(\dfrac{n-r-1}{n-2}\Big) 
+    + \dfrac{r-1}{n-1}\Big(\dfrac{n-r}{n-2}\Big)\\
+\end{align}
+Using Total Probability law:
+\begin{align*}
+    P(B_2)&=\sum^n_{r=1}P(B_2|U_r)P(U_r)\\
+    P(B_2)&=\sum^n_{r=1}\left[\dfrac{n-r}{n-1}\Big(\dfrac{n-r-1}{n-2}\Big)
+    + \dfrac{r-1}{n-1}\Big(\dfrac{n-r}{n-2}\Big)\right]\frac{1}{n}\\
+    &=\frac{1}{n(n-1)(n-2)}\sum^n_{r=1}[n^2-2n+(2-n)r]\\
+    &=\frac{1}{n(n-1)(n-2)}\Big[n^3-2n^2+\dfrac{(2-n)n(n+1)}{2}\Big]\\
+    &=\frac{1}{(n-1)(n-2)}\left[\frac{n^2-3n+2}{2}\right]\\
+  \Rightarrow P(B_2) &=\frac{1}{2}
+\end{align*}
+If it's given that the first ball drawn was black, the probability that the second ball is black can be written as $P(B_2|B_1)$:
+$$P(B_2|B_1) = \frac{P(B_2)\cap B_1)}{P(B_1)}$$
+Again, in an urn $U_r$:
+\begin{align*}
+P((B_2\cap B_1)|U_r)&=\dfrac{n-r}{n-1}\Big(\dfrac{n-r-1}{n-2}\Big)\\
+&=P((B_2\cap B_1)|U_r)\\
+P(B_1|U_r)&=\dfrac{n-r}{n-1}\\
+&=P(B_1|U_r)
+\end{align*}
+Therefore, we get:
+\begin{align*}
+    P(B_2|B_1)&=\dfrac{\sum^n_{r=1}P((B_2\cap B_1)|U_r)P(U_r)}{\sum^n_{r=1}P(B_2|U_r)P(U_r)}\\
+    &=\dfrac{\sum^n_{r=1}\left[\dfrac{n-r}{n-1}\Big(\dfrac{n-r-1}{n-2}\Big)\right]\dfrac{1}{n}}{\sum^n_{r=1}\left[\dfrac{n-r}{n-1}\right]\dfrac{1}{n}}\\
+    &=\dfrac{\sum^n_{r=1}\left[(n-r)(n-r-1)\right]}{(n-2)\sum^n_{r=1}(n-r)}\\
+    &=\dfrac{1/3}{1/2}\\
+  \Rightarrow P(B_2|B_1)&=\dfrac{2}{3}
+\end{align*}
+
 
 \section{Question 15}
 \label{Q15}
