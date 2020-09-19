@@ -1,0 +1,211 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage[a4paper, hmargin=1in,vmargin=1.5in]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{floatrow}
+\usepackage{graphicx}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Assignment 3}
+\rhead{Question \thesection}
+\lfoot{Group 13}
+\rfoot{Page \thepage}
+\renewcommand{\footrulewidth}{1pt}
+\newtheorem*{remark}{Remark}
+\begin{document}
+\title{EE 325 Group 13 - Assignment 3 }
+\author{
+    Manideep Vudayagiri\\
+    \textbf{190070074}
+    \and
+    Shreyas Nadkarni\\
+    \textbf{19D170029}
+    \and
+    Tarun Kumar\\
+    \textbf{19D070062}
+    \and
+    Ashish Pol\\
+    \textbf{190070011}
+    \and
+    Rohit Ahirwar\\
+    \textbf{190070053}
+    
+    
+}
+
+\maketitle
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\pagenumbering{arabic}
+
+\newpage
+
+\section{Question 1}
+\label{Q1}
+ $F(x)$ is a valid distribution. Which of the following functions of $F(x)$ are also valid
+distributions. Provide a proof for your claim.\\
+
+\hspace{1em} \large{\textbf{SOLUTION :}} \\
+Since, $F(x)$ is a cumulative distribution function(cdf), it will have the following properties:
+\begin{align}
+    \lim_{x\to -\infty} F(x) &= 0\\
+    \lim_{x\to \infty} F(x) &= 1\\ 
+    \text{$F(x)$ is a non-decreasing }& \text{function in the domain of $x$ i.e.}\nonumber\\
+    \frac{d}{dx}(F(x)) & \geq 0
+\end{align}
+    
+\textbf{(a)} $aF(x) + (1 - a)F(x) \text{ where } 0 \leq a \leq 1$ .\\
+
+Let us denote this distribution function as $F_1(x)$
+\begin{align*}
+    F_1(x) &= a F(x) + (1 - a)F(x)\\
+    &=F(x) \text{ irrespective of 'a'}\\
+\end{align*}
+This function is the same as the initial function. Hence, it's a valid distribution by default.\\
+
+\textbf{(b)} $F_1(X) = (F(x))^r$\\
+
+This function has to satisfy the properties of a \textit{cdf} to be a valid distribution.\\
+For $r=0$, $F_1(x)=1$ $\forall x \in$ R. This doesn't satisfy $F'(-\infty)= 0$. So, we'll check for $r \neq 0$.\\
+
+If $r<0$ :\\
+\begin{align*}
+    \lim_{x\to -\infty} F_1(x) &= \lim_{x\to -\infty}(F(x))^r\\
+    &= \left(\lim_{x\to -\infty} F(x)\right)^r\\
+    &= (0)^r\\
+    &\Rightarrow \text{not defined}
+\end{align*}
+\\
+\\
+If $r>0$ :\\
+\begin{align*}
+    \lim_{x\to -\infty} F_1(x) &= \lim_{x\to -\infty}(F(x))^r\\
+    &= \left(\lim_{x\to -\infty} F(x)\right)^r\\
+    &= 0\\
+    \lim_{x\to \infty} F_1(x) &= \lim_{x\to \infty}(F(x))^r\\
+    &= \left(\lim_{x\to \infty} F(x)\right)^r\\
+    &= (1)^r\\
+    &= 1\\
+    \frac{d}{dx}(F_1(x)) &= \frac{d}{dx}(F(x))^r\\
+    &= r(F(x))^{r-1}\frac{d}{dx}(F(x))\\
+    &\geq 0\\
+\end{align*}
+
+Therefore, $F_1(x)$ is a valid distribution for $r > 0$.
+
+We'll check the validity of the remaining two functions in a similar way.\\
+
+\textbf{(c)} $F_1(x) = 1 - (1 - F(x))^r$\\
+
+Again, $r=0 \Rightarrow F_1(x) = 1$, not a distribution function.\\
+
+If $r<0$ :
+\begin{align*}
+    \lim_{x\to \infty} F_1(x) &= \lim_{x\to \infty}(1-(1-F(x))^r)\\
+    &= 1-\left(\lim_{x\to \infty}(1-F(x))\right)^r\\
+    &= 1-(1-1)^r\\
+    &= 1-(0)^r\\
+    &\Rightarrow \text{not defined}
+\end{align*}
+\begin{align*}
+    \lim_{x\to -\infty} F_1(x) &= \lim_{x\to -\infty}(1-(1-F(x))^r)\\
+    &= 1-\left(\lim_{x\to -\infty}(1-F(x))\right)^r\\
+    &= 1-(1-0)^r\\
+    &= 0\\
+   \lim_{x\to \infty} F_1(x) &= \lim_{x\to \infty}(1-(1-F(x))^r)\\
+    &= 1-\left(\lim_{x\to \infty}(1-F(x))\right)^r\\
+    &= 1-(1-1)^r\\
+    &= 1\\
+    \frac{d}{dx}(F_1(x)) &= \frac{d}{dx}(1-(1-F(x))^r)\\
+    &= r(1-F(x))^{r-1}\frac{d}{dx}(F(x))\\
+    &\geq 0
+\end{align*}
+
+Therefore, $F_1(x)$ is a valid distribution for $r > 0$.
+
+\textbf{(d)} $F_1(x)=F(x)+(1-F(x))\log(1-F(x))$\\
+\begin{align*}
+    \lim_{x\to -\infty}F_1(x) &= \lim_{x\to -\infty}\Big[F(x)+(1-F(x))\log(1-F(x))\Big]\\
+    &= \lim_{x\to -\infty}F(x) + \lim_{x\to -\infty}\Big[(1-F(x))\log(1-F(x))\Big]\\
+    &\text{(Let, $F(x)=t$)}\\
+    &= 0 + \lim_{t\to 0}[(1-t)\log(1-t)]\\
+    &= 0+0\\
+    &=0\\
+    \lim_{x\to \infty}F_1(x) &= \lim_{x\to \infty}\Big[F(x)+(1-F(x))\log(1-F(x))\Big]\\
+    &= \lim_{x\to \infty}F(x) + \lim_{x\to \infty}\Big[(1-F(x))\log(1-F(x))\Big]\\
+    &\text{(Let, $F(x)=t$)}\\
+    &= 1 + \lim_{t\to 0}[(1-t)\log(1-t)]\\
+    &=1+0\\
+    &=1\\
+\end{align*}
+\begin{align*}
+    \frac{d}{dx}(F_1(x)) &= \frac{d}{dx}[F(x)+(1-F(x))\log(1-F(x))]\\
+    &=\frac{d}{dx}(F(x))+\Big(-\frac{d}{dx}(\log(1-F(x))\Big)+
+    \frac{-(1-F(x))}{1-F(x)}\Big(\frac{d}{dx}F(x)\Big)\\
+    &=-\frac{d}{dx}(F(x))\log(1-F(x))\\
+\end{align*}
+\begin{center}
+$\dfrac{d}{dx}(F(x))\geq 0$ and $\log(1-F(x))\leq 0$ since $F(x)\in [0,1]$
+\end{center}
+$$\Rightarrow \frac{d}{dx}(F_1(x))\geq 0$$
+Therefore, $F_1(x)$ is a valid distribution.
+
+\section{Question 2}
+\label{Q2}
+  There are two urns—A containing $n$ black balls and B containing $n$ brown balls. At each step, one ball is chosen at random from both urns and swapped, i.e., the one from $A$ is put into $B$ and vice versa. Let $X_m$ be the number of black balls in urn A after $m$ steps. Observe that this determines the state of the system after $m$ steps, i.e., knowing $X_m$ describes the composition of both the urns. Obtain the pmf of $X_m$. This is a model for diffusion\\
+
+\hspace{1em} \large{\textbf{SOLUTION :}} \\
+
+\section{Question 3}
+\label{Q3}
+  Recall the ‘capture-release-recapture’ problem: Catch m fish, mark them and release them back into the lake. Allow the fish to mix well and then you catch m fish. Of these p are those that were marked before. Assume that the actual fish population in the lakes is n and has not changed between the catches. Let $P_{m,p}(n)$ be the probability of the event (for a fixed p re-catches out of m) coming from n fish in the lake. Generate a plot for $P_{m,p}(n)$ as a function of n for the following values of m and p : m = 100 and p = 10, 20, 50, 75. For each of these p, use the plots to estimate (educated guess) the actual value of n. Call these four estimates $n_1, n_2, n_3, n_4$. \\
+
+\hspace{1em} \large{\textbf{SOLUTION :}} \\
+
+\section{Question 5}
+\label{Q5}
+
+A fair die is rolled $6n$ times. Let $\rho_n$ be the probability that there $n$ 6s in the $6n$
+rolls. Is $\rho_n$ a monotonic function. Prove your statement. \\
+
+\hspace{1em} \large{\textbf{SOLUTION :}} \\
+
+Let A be the event where a die is rolled and the outcome is 6.
+$$P(A) = \frac{1}{6} = \alpha$$
+and
+$$P(\overline{A}) = \frac{5}{6} = 1 - \alpha$$
+
+Let B be the event where there are n 6s are in 6n rolls. 
+The probability of event B is given by the binomial distribution :
+\begin{align*}
+	P(B) &= {6n \choose n} \times P(A)^n \times P(\overline{A})^{6n-n} \\
+	\rho_n &= \frac{6n!}{5n! \times n!} \times \alpha^n \times (1-\alpha)^{5n} \\
+	&= \frac{6n!}{5n! \times n!}  \times \Bigg(\frac{1}{6}\Bigg)^n \times \Bigg(\frac{5}{6}\Bigg)^{5n} \\
+	&= \frac{6n!}{5n! \times n!} \times \frac{(5)^{5n}}{(6)^{6n}}
+\end{align*}
+
+For proving that $\rho_n$ is a monotonic function: \\
+\begin{align*}
+	\frac{\rho_{n+1}}{\rho_n} &= \frac{\frac{(6(n+1))!}{(5(n+1))! \times (n+1)!} \times \frac{5^{5(n+1)}}{6^{6(n+1)}}}{\frac{6n!}{5n! \times n!} \times \frac{5^{5n}}{6^{6n}}} \\
+	&= \frac{(6n+6)(6n+5)(6n+4)(6n+3)(6n+2)(6n+1)}{(5n+5)(5n+4)(5n+3)(5n+2)(5n+1)(n+1)} \times \frac{5^5}{6^6} \\
+	&= \frac{(n+\frac{5}{6})(n+\frac{4}{6})(n+\frac{3}{6})(n+\frac{2}{6})(n+\frac{1}{6})}{(n+\frac{5}{5})(n+\frac{4}{5})(n+\frac{3}{5})(n+\frac{2}{5})(n+\frac{1}{5})} \\
+	&< 1 &&(\forall n \geqslant 1)
+\end{align*}
+
+Hence $\rho_n$ is a monotonically decreasing function.
+
+
+
+
+
+\end{document}
